@@ -21,3 +21,9 @@ class EditConfig:
                 return True
         except:
             return False
+
+    def countSamples(self):
+        try:
+            return len(self.readConfig())
+        except:
+            return 0

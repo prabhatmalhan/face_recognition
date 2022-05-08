@@ -2,12 +2,20 @@ import tkinter.filedialog as fd
 from tkinter import *
 from camCapture import capture
 import os
+from editConfig import EditConfig as EC
+
+ec = EC(os.path.join("..", "config.json"))
 
 
 def captureCam():
     name = input.get(1.0, "end-1c")
     if name == '':
         name = 'extra'
+
+    id = str(ec.countSamples())
+    print(ec.addSample(name))
+    name = id
+
     root = os.path.join('..', 'resources')
     try:
         os.mkdir(os.path.join(root, name))
@@ -20,6 +28,11 @@ def captureVid():
     name = input.get(1.0, "end-1c")
     if name == '':
         name = 'extra'
+
+    id = str(ec.countSamples())
+    print(ec.addSample(name))
+    name = id
+
     filename = fd.askopenfilename(title='Open a video', initialdir='/')
     if filename == '':
         return

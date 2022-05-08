@@ -16,7 +16,7 @@ class EditConfig:
         try:
             jsonDict = self.readConfig()
             jsonDict[str(len(jsonDict))] = val
-            with open(self.__filepathfilepath, 'w') as f:
+            with open(self.__filepath, 'w') as f:
                 json.dump(jsonDict, f, indent=2)
                 return True
         except:

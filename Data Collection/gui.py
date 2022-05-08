@@ -8,7 +8,7 @@ def captureCam():
     name = input.get(1.0, "end-1c")
     if name == '':
         name = 'extra'
-    root = os.path.join('.', 'resources')
+    root = os.path.join('..', 'resources')
     try:
         os.mkdir(os.path.join(root, name))
     except:
@@ -23,7 +23,7 @@ def captureVid():
     filename = fd.askopenfilename(title='Open a video', initialdir='/')
     if filename == '':
         return
-    root = os.path.join('.', 'resources')
+    root = os.path.join('..', 'resources')
     try:
         os.mkdir(os.path.join(root, name))
     except:

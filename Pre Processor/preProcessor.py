@@ -12,9 +12,9 @@ def get_face(image: Str):
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     for (x, y, w, h) in faces:
         img = cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-        roi_gray = cv2.resize(gray[y:y+h, x:x+w], (100, 100))
-        # roi_color = cv2.resize(img[y:y+h, x:x+w], (100, 100))
+        # roi_gray = cv2.resize(gray[y:y+h, x:x+w], (100, 100))
+        roi_color = cv2.resize(img[y:y+h, x:x+w], (100, 100))
     try:
-        return (True,roi_gray)
+        return (True, roi_color)
     except:
-        return (False,None)
+        return (False, None)

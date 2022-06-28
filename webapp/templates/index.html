@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../static/style.css" />
+<script src="../static/app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<head>
+    <title>Face Detection</title>
+</head>
+
+<body>
+    <div id="bground">
+        <div id="quote1" class="quote">
+            <p class="qte">The face is the mirror of the mind, and eyes without speaking confess the secrets of the
+                heart.</p>
+            <a class="goto" onclick="ImidStrt()">Start Detection
+                <img src="../static/images/scan.png" alt="scanImg" style="margin-left: 3%;">
+            </a>
+        </div>
+        <div id="quote2" class="quote">
+            <p class="qte">Don't hate machine learning for being simple. Levers are simple too, but they can move the
+                world.</p>
+            <a class="goto" href="https://github.com/prabhatmalhan/face_recognition" target="_blank">Github Repo
+                <img src="../static/images/github.png" alt="gitCat" style="margin-left: 3%;">
+            </a>
+        </div>
+    </div>
+    <div id="proj-desc">
+        <p id="proj-head">Face Detection Using CNN</p>
+        <div id="proj-subj">
+            <p>Face detection is a computer application used to detect the presence of human faces in images and video
+                sequences.Face detection software can identify a person or a particular face in an image, thus helping
+                the owner can detect presence of friends and family members in images or videos.
+            </p>
+            <p>This tech keeps overgrowing day by day. Although it can be used for various purposes, the portion of its
+                applications that results from biometric authentication perspective is enormous.We can use this tech on
+                our phones to unlock the screen, make payments, login to services and websites, detect emotion or even
+                identify someone.
+            </p>
+            <p>Facerec is a product that helps recognizing the face and have a wide domain of use. The product is based
+                on a deep learning model that is trained on a large dataset of finite faces. For the recognition the
+                model uses :
+            <ul style="margin-top:-1%;">
+                <li>The Haar Cascade</li>
+                <li>Convolutional Neural Networks(CNN)</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    <div id="detection">
+        <p id="det-head">Facial Recognition</p>
+        <div id="camera-faces">
+            <div id="camera-struct">
+                <div class="camera">
+                    <video id="video" style="display: none;">Video stream not available.</video>
+                </div>
+                <canvas id="canvas" style="display: none;">
+                </canvas>
+                <img id="photo">
+                <button class="choice-butt" id="stp-camera" style="display: none;" onclick="StopCamera()">Stop
+                    Camera</button>
+                <button class="choice-butt" id="stp-video" style="display: none;" onclick="StopVideo()">Stop
+                    Video</button>
+                <form>
+                    <input type="file" id="inp" name="input_video" accept="video/mp4, video/mov" style="display: none;">
+                    <input type="reset" id="vid-res" style="display: none;">
+                </form>
+            </div>
+            <div id="rec-face" style="display: flex; flex-direction: column; align-items: center; margin-top: 5%;">
+                <!-- <p class="face-name">Aryan</p>
+            <p class="face-name">Tanishka</p> -->
+            </div>
+            <div id="choice">
+                <button class="choice-butt" onclick="CameraStart()">Use Camera</button>
+                <button class="choice-butt" onclick="VideoStart()">Input Video</button>
+            </div>
+        </div>
+    </div>
+    <div id="about">
+        <p id="name">Made with ❤ by
+            <a id="profile-link" href="https://github.com/prabhatmalhan/">Prabhat Malhan<a>
+        </p>
+    </div>
+</body>
+
+</html>

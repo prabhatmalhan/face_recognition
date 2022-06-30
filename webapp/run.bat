@@ -1,0 +1,1 @@
+activate tensor & python app.py

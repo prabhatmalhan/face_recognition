@@ -7,6 +7,24 @@ import json as js
 import os
 from preProcessor import get_face as gf
 
+json_file = open('..\\model\\model.json', 'r')
+loaded_model_json = json_file.read()
+json_file.close()
+loaded_model = model_from_json(loaded_model_json)
+loaded_model.load_weights("..\\model\\model_weights.h5")
+
+# Loading prediction class indices
+try:
+    with open(os.path.join('..', 'model', 'class indices')) as f:
+        classLabel = js.load(f)
+except:
+    print("failed")
+
+classLabel = {str(value): key for key, value in classLabel.items()}
+
+with open(os.path.join("..", "config.json"), 'r') as f:
+    name = js.load(f)
+
 app = Flask(__name__)
 
 
@@ -27,8 +45,8 @@ def ImgData():
         png_original = base64.b64decode(data_url)
         png_as_np = np.frombuffer(png_original, dtype=np.uint8)
         img = cv2.imdecode(png_as_np, flags=1)
-        # Decoded the imgae
 
+        # Decoded the imgae
         img, ans = ProcImage(img)
         string = base64.b64encode(cv2.imencode('.png', img)[1]).decode()
         dict['img'] = string
@@ -37,25 +55,6 @@ def ImgData():
 
 
 def ProcImage(frame):
-
-    # Loading Model
-    json_file = open('..\\model\\model.json', 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
-    loaded_model = model_from_json(loaded_model_json)
-    loaded_model.load_weights("..\\model\\model_weights.h5")
-
-    # Loading prediction class indices
-    try:
-        with open(os.path.join('..', 'model', 'class indices')) as f:
-            classLabel = js.load(f)
-    except:
-        print("failed")
-
-    classLabel = {str(value): key for key, value in classLabel.items()}
-
-    with open(os.path.join("..", "config.json"), 'r') as f:
-        name = js.load(f)
 
     _, image, face = gf(frame)
     if _:
